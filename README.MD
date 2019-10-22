@@ -2,11 +2,7 @@
 
 Requires vcf-module /data/bnf/scripts/CMD/vcf.pm
 
-To run the script
-
-`nextflow run main.nf --csv input.csv -with-singularity /fs1/resources/containers/container_twist-brca.sif -resume --reads 1,1,0 --manta --melt`
-
-
+## Execution
 
 aggregate_vcf.pl --base BASE_VARIANT_CALLER [--freebayes/mutect/pindel/vardict/gatkhc/manta/strelka VCF [--fluffify-pindel] [--tumor-id --normal-id]
    --base        Defines which variant caller is used as base vcf (required)
