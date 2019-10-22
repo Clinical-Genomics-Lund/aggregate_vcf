@@ -4,8 +4,8 @@ Requires vcf-module /data/bnf/scripts/CMD/vcf.pm
 
 ## Execution
 
-aggregate_vcf.pl --base BASE_VARIANT_CALLER [--freebayes/mutect/pindel/vardict/gatkhc/manta/strelka VCF [--fluffify-pindel] [--tumor-id --normal-id]
-   --base        Defines which variant caller is used as base vcf (required)
+    aggregate_vcf.pl --base BASE_VARIANT_CALLER [--freebayes/mutect/pindel/vardict/gatkhc/manta/strelka VCF [--fluffify-pindel] [--tumor-id --normal-id]
+    --base        Defines which variant caller is used as base vcf (required)
 
     Any number of these are allowed, at least one required:
     --freebayes VCF   Freebayes VCF path
