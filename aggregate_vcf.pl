@@ -8,9 +8,9 @@ use Data::Dumper;
 
 
 my %opt = ();
-my %supported_callers = ( 'freebayes'=>1, 'mutect'=>1, 'vardict'=>1, 'pindel'=>1, 'gatkhc'=>1, 'manta'=>1, 'strelka'=>1 );
+my %supported_callers = ( 'freebayes'=>1, 'mutect'=>1, 'vardict'=>1, 'pindel'=>1, 'gatkhc'=>1, 'manta'=>1, 'strelka'=>1, 'tnscope'=>1 );
 
-GetOptions( \%opt, 'base=s', 'mutect=s@', 'freebayes=s@', 'vardict=s@', 'pindel=s@', 'manta=s@', 'gatkhc=s@', 'strelka=s@', 'excl-prefix=s', 'tumor-id=s', 'normal-id=s', 'fluffify-pindel' );
+GetOptions( \%opt, 'base=s', 'mutect=s@', 'freebayes=s@', 'vardict=s@', 'pindel=s@', 'manta=s@', 'gatkhc=s@', 'strelka=s@', 'tnscope=s@', 'excl-prefix=s', 'tumor-id=s', 'normal-id=s', 'fluffify-pindel' );
 $opt{'excl-prefix'} = "DO_NOTHING" unless $opt{'excl-prefix'};
 
 my( $base, $add ) = check_options( \%opt );
@@ -320,6 +320,15 @@ sub reformat_GT {
 	    }
 	}
 	
+	# TNSCOPE
+	elsif ( $caller eq "tnscope" ) {
+		$out_vcf_str .= "\t".$full_info->{GT}->{ $translate_names->{$sample_name} }->{GT};
+		my( $ref_dp, $alt_dp ) = split /,/, $full_info->{GT}->{ $translate_names->{$sample_name} }->{AD};
+		$out_vcf_str .= ":".($ref_dp+$alt_dp);
+		$out_vcf_str .= ":".($alt_dp);
+		$out_vcf_str .= ":".$full_info->{GT}->{ $translate_names->{$sample_name} }->{AF};
+
+	}
 	else {
 	    die "GT-reformatting for $caller not yet implemented";
 	}
