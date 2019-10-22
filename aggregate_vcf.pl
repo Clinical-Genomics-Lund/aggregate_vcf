@@ -408,6 +408,7 @@ sub help_text {
     print "   --manta VCF       Manta VCF path\n";
     print "   --pindel VCF      pindel VCF path\n";
     print "   --strelka VCF     Strelka2 VCF path\n";
+	print "   --tnscope VCF     Tnscope VCF path\n";
     print "   --gatkhc VCF      GATK HaplotypeCaller VCF path\n\n";
 
     print "Additional options:\n";
