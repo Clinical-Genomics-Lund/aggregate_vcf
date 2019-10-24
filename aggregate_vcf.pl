@@ -442,7 +442,7 @@ sub excl_prefix {
 sub is_gzipped {
     my $fn = shift;
     
-    my $file_str = `file $fn`;
+    my $file_str = `file -L $fn`;
     return 1 if $file_str =~ /gzip compressed/;
     return 0;
 }
